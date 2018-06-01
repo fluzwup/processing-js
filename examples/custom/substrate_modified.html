@@ -31,6 +31,10 @@ int maxpal = 512;
 int numpal = 0;
 color[] goodcolor = new color[maxpal];
 
+int bgcol = 5;
+int crackcol = 128;
+int startcrackcount = 5;
+
 // sand painters
 SandPainter[] sands;
 
@@ -39,7 +43,7 @@ SandPainter[] sands;
 void setup() {
   size(dimx,dimy);
 
-  background(0);
+  background(bgcol);
   //takecolor("data/pollockShimmering.gif");
   takecolor("data/neon.jpg");
   
@@ -86,10 +90,10 @@ void begin() {
 
   // make just three cracks
   num=0;
-  for (int k=0;k<3;k++) {
+  for (int k=0;k<startcrackcount;k++) {
     makeCrack();
   }
-  background(0);
+  background(bgcol);
 }
 
 
@@ -202,8 +206,7 @@ class Crack {
     regionColor();
     
     // draw black crack
-    //stroke(0,85);
-    stroke(255,85);
+    stroke(crackcol,85);
     point(x+random(-z,z),y+random(-z,z));
     
     
