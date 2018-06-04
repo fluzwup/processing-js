@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="../../processing.js"></script>
+</head>
+<body>
+
+<script type="application/processing">
+PImage a;
+
+void setup() {
+  size(1500, 1000);
+  a = loadImage("data/disapproving_cat_is_disapproving.jpg");
+}
+
+void draw() {
+  image( a, 0, 0 );
+  loadPixels();
+
+  int halfImage = 1500*500;
+  for (int i = 0; i < halfImage; i++) 
+  {
+    int b = pixels[i].brightness();
+    pixels[i] = color(b, b, b);
+  }
+
+  updatePixels();
+
+}
+
+</script><canvas width="1500" height="1000"></canvas></p>
+<div style="height:0px;width:0px;overflow:hidden;"><img src="data/disapproving_cat_is_disapproving.jpg" id="cat.jpg"/></div>
+
+</body>
+</html>
