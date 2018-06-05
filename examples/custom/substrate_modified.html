@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <script src="../../processing.js"></script>
+  <script src="processing.js"></script>
 <h2>Substrate</h2>
 
 <p>This code was updated from the Java source to work with Processing.js asynchronous image loading. <sup>-F1LT3R</sup></p>
@@ -17,8 +17,8 @@
 // Processing 0085 Beta syntax update
 // j.tarbell   April, 2005
 
-int dimx = 750;
-int dimy = 750;
+int dimx = 500;
+int dimy = 500;
 int num = 0;
 int maxnum = 100;
 
@@ -45,7 +45,7 @@ void setup() {
 
   background(bgcol);
   //takecolor("data/pollockShimmering.gif");
-  takecolor("data/neon.jpg");
+  takecolor("neon.jpg");
   
   cgrid = new int[dimx*dimy];
   cracks = new Crack[maxnum];
@@ -292,8 +292,8 @@ class SandPainter {
 // Albuquerque, New Mexico
 // complexification.net
 
-</script><canvas width="750" height="750"></canvas></p>
-<div style="height:0px;width:0px;overflow:hidden;"><img src="data/neon.jpg" id="neon.jpg"/></div>
+</script><canvas width="500" height="500"></canvas></p>
+<div style="height:0px;width:0px;overflow:hidden;"><img src="neon.jpg" id="neon.jpg"/></div>
 
 </body>
 </html>
