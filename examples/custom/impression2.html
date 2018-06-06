@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="../../processing.js"></script>
+</head>
+<body>
+
+<script type="application/processing">
+
+void setup() 
+{
+	size(1278, 719);
+}
+
+void mousePressed() 
+{
+	impression();
+}
+
+void impression()
+{
+	PImage a;
+	a = loadImage("data/disapproving_cat_is_disapproving.jpg", null, function()
+	{
+		image(a, 0, 0);
+		background(255);
+		stroke(255, 0);	// color, alpha
+	
+		for(i = 30; i >= 5; i -= 5)
+		{		
+			for(int x = 0; x < 1278; x += i)
+			{
+				for(int y = 0; y < 719; y += i)
+				{
+					int ox = Math.random() * 10;
+					int oy = Math.random() * 10;
+					color c = a.get(x, y);
+		
+					int volume = brightness(c);
+					int intensity = brightness(c) * saturation(c) / 255;
+		
+					int diameter = 0;
+					int alpha = 0;
+					strokeWeight(1);
+					switch(i)
+					{
+					case 30:
+						if(volume > 127)
+						{ 
+							diameter = 5 * i;
+							alpha = 128;
+							fill(c, alpha);
+							ellipse(x + ox, y + oy, diameter, diameter);
+						}
+						break;
+					case 25:
+					case 20:
+					case 15:
+						if(intensity > 127)
+						{
+							diameter = 3 * i;
+							alpha = 128;
+							fill(c, alpha);
+							ellipse(x + ox, y + oy, diameter, diameter);
+						}
+						break;
+					case 10:
+						if(intensity < 127)
+						{
+							stroke(c, 64);
+							strokeWeight(1.5 * i);
+							line(x + ox - i, y + oy + i, x + ox + i, y + oy - i);
+						}
+						break;
+					default:
+						if(volume < 64)
+						{
+							stroke(c, 127);
+							strokeWeight(i);
+							line(x + ox - i, y + oy + i, x + ox + i, y + oy - i);
+						}
+						break;
+					}
+				}
+			}
+		}
+	});
+}
+
+
+</script><canvas width="1500" height="1000"></canvas></p>
+<div style="height:0px;width:0px;overflow:hidden;"><img src="data/disapproving_cat_is_disapproving.jpg" id="cat.jpg"/></div>
+
+</body>
+</html>
