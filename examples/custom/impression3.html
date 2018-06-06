@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="../../processing.js"></script>
+</head>
+<body>
+
+<script type="application/processing">
+
+void setup() 
+{
+	size(1300, 800);
+}
+
+void mousePressed() 
+{
+	impression();
+}
+
+void impression()
+{
+	PImage a;
+	a = loadImage("data/disapproving_cat_is_disapproving.jpg", null, function()
+	{
+		image(a, 0, 0);
+		loadPixels();
+		var oldPix = pixels.slice(0);
+
+		for(int y = 0; y < a.height; y += 1)
+		{
+			for(int x = 0; x < a.width; x += 1)
+			{
+				color c = oldPix[y * a.width + x];
+				//color c = pixels[y * a.width + x];
+				pixels[y * a.width + x] = color(blue(c), red(c), green(c));
+			}
+		}
+		updatePixels();
+	});
+}
+
+
+
+</script>
+<canvas width="1500" height="1000"></canvas>
+<!-- <div style="height:0px;width:0px;overflow:hidden;"><img src="data/disapproving_cat_is_disapproving.jpg" id="cat.jpg"/></div> -->
+
+
+</body>
+</html>
