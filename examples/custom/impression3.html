@@ -9,7 +9,7 @@
 
 void setup() 
 {
-	size(1300, 800);
+	size(100, 100);
 }
 
 void mousePressed() 
@@ -22,17 +22,28 @@ void impression()
 	PImage a;
 	a = loadImage("data/disapproving_cat_is_disapproving.jpg", null, function()
 	{
+		// b = loadImage("topanga.jpg");
+		// image(b, 0, 0);
+		// filter(INVERT | DILATE | ERODE);
+		// save("filter_invert.tif");
+
+		// blend(srcimg, dest_x, y, w, h, src_x, y, w, h,ADD | SUBTRACT | DARKEST | LIGHTEST | DIFFERENCE);
+		// PImage img = loadImage("rockies.jpg");
+		// PImage img2 = loadImage("degaul.jpg"); 
+		// img.blend(img2, 0, 0, 33, 100, 67, 0, 33, 100, LIGHTEST); 
+		// image(img, 0, 0);
+		// image(img2, 0, 0);
+
+		size(a.width, a.height);
 		image(a, 0, 0);
 		loadPixels();
 		var oldPix = pixels.slice(0);
-
-		for(int y = 0; y < a.height; y += 1)
+		for(int y = 0; y < a.height * a.width; y += a.width)
 		{
 			for(int x = 0; x < a.width; x += 1)
 			{
-				color c = oldPix[y * a.width + x];
-				//color c = pixels[y * a.width + x];
-				pixels[y * a.width + x] = color(blue(c), red(c), green(c));
+				color c = oldPix[(a.height * a.width) - (y + x)];
+				pixels[y + x] = c;
 			}
 		}
 		updatePixels();
